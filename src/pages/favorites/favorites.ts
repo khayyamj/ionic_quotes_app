@@ -21,14 +21,18 @@ export class FavoritesPage {
     this.quotes = this.quoteService.getFavoriteQuotes();
   }
 
-  onViewQuote(_quote: Quote) {
-    const modal = this.modalCtrl.create(QuotePage, _quote);
+  onViewQuote(quote: Quote) {
+    const modal = this.modalCtrl.create(QuotePage, quote);
     modal.present();
     modal.onDidDismiss((remove: boolean) => {
       if (remove) {
-        this.quoteService.removeQuoteFromFavorites(_quote);
-        this.quotes = this.quotes.filter((quote: Quote) => quote.id !== _quote.id);
+        this.onRemoveFromFavorites(quote);
       }
     });
+  }
+
+  onRemoveFromFavorites(quote: Quote) {
+    this.quoteService.removeQuoteFromFavorites(quote);
+    this.quotes = this.quotes.filter((_quote: Quote) => _quote.id !== quote.id);
   }
 }
