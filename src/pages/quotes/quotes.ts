@@ -19,6 +19,10 @@ export class QuotesPage implements OnInit {
     this.quoteGroup = this.navParams.data;
   }
 
+  isFavorite(quote: Quote) {
+    return this.quoteService.isQuoteFavorited(quote);
+  }
+
   onAddToFavorite(selectedQuote: Quote) {
     const alert = this.alertCtrl.create({
       title: 'Add Quote',
@@ -40,5 +44,9 @@ export class QuotesPage implements OnInit {
       ]
     });
     alert.present();
+  }
+
+  onRemoveFromFavorite(quote: Quote) {
+    this.quoteService.removeQuoteFromFavorites(quote);
   }
 }
