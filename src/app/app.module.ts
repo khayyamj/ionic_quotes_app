@@ -5,12 +5,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { FavoritesPage } from './../pages/favorites/favorites';
+import { FavoritesPage } from '../pages/favorites/favorites';
 import { LibraryPage } from '../pages/library/library';
 import { QuotePage } from '../pages/quote/quote';
 import { QuotesPage } from '../pages/quotes/quotes';
 import { QuotesService } from '../services/quotes-service';
 import { SettingsPage } from '../pages/settings/settings';
+import { SettingsService } from '../services/setting';
 import { TabsPage } from '../pages/tabs/tabs';
 
 @NgModule({
@@ -39,6 +40,7 @@ import { TabsPage } from '../pages/tabs/tabs';
   ],
   providers: [
     QuotesService,
+    SettingsService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
